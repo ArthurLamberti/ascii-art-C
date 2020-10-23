@@ -56,7 +56,7 @@ int main(int argc, char **argv)
     printf("ALTURAS -     %d    |     %d        |      %d       |   %d\n", alturaOriginal, alturaProporcional, alturaArredondada, alturaReduzida);
     int larguraOriginal = pic.width;
     int larguraProporcional = larguraOriginal * (fatorReducao / 100.0);
-    int larguraArredondada = larguraProporcional / 4 * 4;   //mesma coisa da altura
+    int larguraArredondada = larguraProporcional / 4 * 4; //mesma coisa da altura
     int larguraReduzida = larguraArredondada / 4;
     printf("LARGURAS -    %d    |     %d        |      %d       |   %d\n", larguraOriginal, larguraProporcional, larguraArredondada, larguraReduzida);
 
@@ -90,9 +90,7 @@ int main(int argc, char **argv)
     int cinzaMediano = 0;
     int index = 0;
     //ta cortando o final e a parte de baixo da imagem quando fator de reducao for diferente de 0
-    double aux = 2 -  (fatorReducao / 100.0);
-    int preSaltoAltura = 5 * aux;
-    int preSaltoLargura = 4 * aux;
+    double aux = 2 - (fatorReducao / 100.0);
     for (int i = 0, saltoAltura = i; i < alturaReduzida; i++, saltoAltura = i * (5 * aux))
     {
         // printf("%d - ",saltoAltura);
@@ -118,7 +116,7 @@ int main(int argc, char **argv)
             index++;
         }
     }
-    SOIL_save_image("outOriginal.bmp", SOIL_SAVE_TYPE_BMP, pic.width, pic.height,
+    SOIL_save_image("outOriginalCinza.bmp", SOIL_SAVE_TYPE_BMP, pic.width, pic.height,
                     3, (const unsigned char *)pic.img);
     SOIL_save_image("outNovoReduzido.bmp", SOIL_SAVE_TYPE_BMP, novaImg.width, novaImg.height,
                     3, (const unsigned char *)novaImg.img);
