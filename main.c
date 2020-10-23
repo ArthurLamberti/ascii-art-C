@@ -52,12 +52,13 @@ int main(int argc, char **argv)
     int alturaProporcional = alturaOriginal * (fatorReducao / 100.0);
     int alturaArredondada = alturaProporcional / 5 * 5; //arredonda com 5 + fator de reducao devido ao caracter
     int alturaReduzida = alturaArredondada / 5;         //usar fator de reducao
-    printf("ALTURAS - %d - %d - %d - %d\n", alturaOriginal, alturaProporcional, alturaArredondada, alturaReduzida);
+    printf("           Original | Proporcional  | Arredondada   | Reduzida\n");
+    printf("ALTURAS -     %d    |     %d        |      %d       |   %d\n", alturaOriginal, alturaProporcional, alturaArredondada, alturaReduzida);
     int larguraOriginal = pic.width;
     int larguraProporcional = larguraOriginal * (fatorReducao / 100.0);
     int larguraArredondada = larguraProporcional / 4 * 4;   //mesma coisa da altura
     int larguraReduzida = larguraArredondada / 4;
-    printf("LARGURAS - %d - %d - %d - %d\n", larguraOriginal, larguraProporcional, larguraArredondada, larguraReduzida);
+    printf("LARGURAS -    %d    |     %d        |      %d       |   %d\n", larguraOriginal, larguraProporcional, larguraArredondada, larguraReduzida);
 
     RGB pixelMediano;
     pixelMediano.b = pixelMediano.g = pixelMediano.r;
