@@ -5,7 +5,6 @@
  <a href="#Objetivo">Objetivo</a> •
  <a href="#Tecnologias">Tecnologias</a> • 
  <a href="#Features">Features</a> • 
- <a href="#Rodando a aplicacao">Rodando a aplicacao</a> • 
 </p>
 <h4 align="center">Entregue conforme requisitado</h4>
 
@@ -30,7 +29,7 @@ Em caso de utilizar linux, sera necessario a instalacao dos pacotes de desenvolv
 $ sudo apt-get install freeglut3-dev
 
 
-### Rodando-a-aplicacao
+### Rodando a aplicacao
 <p>Clone esse repositorio</p>
 $ git clone https://github.com/ArthurLamberti/ascii-art-C.git
 <p>Va para a pasta da aplicacao no terminal/cmd</p>
