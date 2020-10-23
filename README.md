@@ -5,7 +5,7 @@
  <a href="#Objetivo">Objetivo</a> •
  <a href="#Tecnologias">Tecnologias</a> • 
  <a href="#Features">Features</a> • 
- <a href="#Rodando">Rodando a aplicacao</a> • 
+ <a href="#Rodando a aplicacao">Rodando a aplicacao</a> • 
 </p>
 <h4 align="center">Entregue conforme requisitado</h4>
 
