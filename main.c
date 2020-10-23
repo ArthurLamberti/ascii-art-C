@@ -37,20 +37,25 @@ void load(char *name, Img *pic)
 int main(int argc, char **argv)
 {
     Img pic;
+    char *p;
     if (argc == 1)
     {
         printf("loader [img]\n");
         exit(1);
     }
     load(argv[1], &pic);
+    int fatorReducao = strtol(argv[2], &p, 10);
+    printf("%d\n",fatorReducao);
     int alturaOriginal = pic.height;
     int alturaArredondada = alturaOriginal / 5 * 5; //arredonda com 5 + fator de reducao devido ao caracter
     int alturaReduzida = alturaArredondada / 5;     //usar fator de reducao
-    printf("ALTURAS - %d - %d - %d\n", alturaOriginal, alturaArredondada, alturaReduzida);
+    int alturaProporcional = alturaReduzida * (fatorReducao/100.0);
+    printf("ALTURAS - %d - %d - %d - %d\n", alturaOriginal, alturaArredondada, alturaReduzida, alturaProporcional);
     int larguraOriginal = pic.width;
     int larguraArredondada = larguraOriginal / 4 * 4; //mesma coisa da altura
     int larguraReduzida = larguraArredondada / 4;     //usar fator de reducao
-    printf("ALTURAS - %d - %d - %d\n", larguraOriginal, larguraArredondada, larguraReduzida);
+    int larguraProporcional = larguraReduzida * (fatorReducao/100.0);
+    printf("LARGURAS - %d - %d - %d - %d\n", larguraOriginal, larguraArredondada, larguraReduzida, larguraProporcional);
 
     RGB pixelMediano;
     pixelMediano.b = pixelMediano.g = pixelMediano.r;
@@ -106,7 +111,7 @@ int main(int argc, char **argv)
 
     SOIL_save_image("outOriginal.bmp", SOIL_SAVE_TYPE_BMP, pic.width, pic.height,
                     3, (const unsigned char *)pic.img);
-    SOIL_save_image("outNovo.bmp", SOIL_SAVE_TYPE_BMP, novaImg.width, novaImg.height,
+    SOIL_save_image("outNovoReduzido.bmp", SOIL_SAVE_TYPE_BMP, novaImg.width, novaImg.height,
                     3, (const unsigned char *)novaImg.img);
     // Exemplo: gravando um arquivo saida.html
     FILE *arq = fopen("saida.html", "w"); // criar o arquivo: w
