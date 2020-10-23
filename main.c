@@ -45,17 +45,18 @@ int main(int argc, char **argv)
     }
     load(argv[1], &pic);
     int fatorReducao = strtol(argv[2], &p, 10);
-    printf("%d\n",fatorReducao);
+    fatorReducao = 100 - fatorReducao;
+    printf("%d\n", fatorReducao);
     int alturaOriginal = pic.height;
-    int alturaArredondada = alturaOriginal / 5 * 5; //arredonda com 5 + fator de reducao devido ao caracter
-    int alturaReduzida = alturaArredondada / 5;     //usar fator de reducao
-    int alturaProporcional = alturaReduzida * (fatorReducao/100.0);
-    printf("ALTURAS - %d - %d - %d - %d\n", alturaOriginal, alturaArredondada, alturaReduzida, alturaProporcional);
+    int alturaProporcional = alturaOriginal * (fatorReducao / 100.0);
+    int alturaArredondada = alturaProporcional / 5 * 5; //arredonda com 5 + fator de reducao devido ao caracter
+    int alturaReduzida = alturaArredondada / 5;         //usar fator de reducao
+    printf("ALTURAS - %d - %d - %d - %d\n", alturaOriginal, alturaProporcional, alturaArredondada, alturaReduzida);
     int larguraOriginal = pic.width;
-    int larguraArredondada = larguraOriginal / 4 * 4; //mesma coisa da altura
-    int larguraReduzida = larguraArredondada / 4;     //usar fator de reducao
-    int larguraProporcional = larguraReduzida * (fatorReducao/100.0);
-    printf("LARGURAS - %d - %d - %d - %d\n", larguraOriginal, larguraArredondada, larguraReduzida, larguraProporcional);
+    int larguraProporcional = larguraOriginal * (fatorReducao / 100.0);
+    int larguraArredondada = larguraProporcional / 4 * 4;   //mesma coisa da altura
+    int larguraReduzida = larguraArredondada / 4;
+    printf("LARGURAS - %d - %d - %d - %d\n", larguraOriginal, larguraProporcional, larguraArredondada, larguraReduzida);
 
     RGB pixelMediano;
     pixelMediano.b = pixelMediano.g = pixelMediano.r;
@@ -86,9 +87,15 @@ int main(int argc, char **argv)
     //diminui a imagem
     int cinzaMediano = 0;
     int index = 0;
-    for (int i = 0, saltoAltura = i; i < alturaReduzida; i++, saltoAltura = i * 5)
+    //ta cortando o final e a parte de baixo da imagem quando fator de reducao for diferente de 0
+    double aux = 2 -  (fatorReducao / 100.0);
+    int preSaltoAltura = 5 * aux;
+    int preSaltoLargura = 4 * aux;
+    printf("%f - %d - %d\n", aux, preSaltoAltura,preSaltoLargura);
+    for (int i = 0, saltoAltura = i; i < alturaReduzida; i++, saltoAltura = i * (5 * aux))
     {
-        for (int j = 0, saltoLargura = j; j < larguraReduzida; j++, saltoLargura = j * 4)
+        printf("%d - ",saltoAltura);
+        for (int j = 0, saltoLargura = j; j < larguraReduzida; j++, saltoLargura = j * (4 * aux))
         {
             //dois primeiros for vai "pulando pixels" pra fazer cinza mediado do tamanho do caracter (5x4)
             for (int altura = saltoAltura; altura < saltoAltura + 5; altura++)
@@ -96,8 +103,10 @@ int main(int argc, char **argv)
                 for (int largura = saltoLargura; largura < saltoLargura + 4; largura++)
                 {
                     //percorre os 20 pixels do caracter somando o valor rgb do cinza
+                    // printf("(%d,%d) - ", altura, largura);
                     cinzaMediano = cinzaMediano + picMatriz[altura][largura].r;
                 }
+                // printf("\n");
             }
             //faz a media do somatorio dos cinzas e seta num novo pixel
             cinzaMediano = cinzaMediano / 20;
@@ -108,7 +117,8 @@ int main(int argc, char **argv)
             index++;
         }
     }
-
+    printf("\n");
+    printf("%d - %d\n", novaImg.height, novaImg.width);
     SOIL_save_image("outOriginal.bmp", SOIL_SAVE_TYPE_BMP, pic.width, pic.height,
                     3, (const unsigned char *)pic.img);
     SOIL_save_image("outNovoReduzido.bmp", SOIL_SAVE_TYPE_BMP, novaImg.width, novaImg.height,
