@@ -38,15 +38,16 @@ int main(int argc, char **argv)
 {
     Img pic;
     char *p;
-    if (argc == 1)
+    if (argc == 2)
     {
-        printf("loader [img]\n");
+        printf("loader [img] [fator reducao]\n");
         exit(1);
     }
     load(argv[1], &pic);
     int fatorReducao = strtol(argv[2], &p, 10);
     fatorReducao = 100 - fatorReducao;
-    printf("%d\n", fatorReducao);
+    // printf("%d\n", fatorReducao);
+
     int alturaOriginal = pic.height;
     int alturaProporcional = alturaOriginal * (fatorReducao / 100.0);
     int alturaArredondada = alturaProporcional / 5 * 5; //arredonda com 5 + fator de reducao devido ao caracter
@@ -91,10 +92,9 @@ int main(int argc, char **argv)
     double aux = 2 -  (fatorReducao / 100.0);
     int preSaltoAltura = 5 * aux;
     int preSaltoLargura = 4 * aux;
-    printf("%f - %d - %d\n", aux, preSaltoAltura,preSaltoLargura);
     for (int i = 0, saltoAltura = i; i < alturaReduzida; i++, saltoAltura = i * (5 * aux))
     {
-        printf("%d - ",saltoAltura);
+        // printf("%d - ",saltoAltura);
         for (int j = 0, saltoLargura = j; j < larguraReduzida; j++, saltoLargura = j * (4 * aux))
         {
             //dois primeiros for vai "pulando pixels" pra fazer cinza mediado do tamanho do caracter (5x4)
@@ -117,8 +117,6 @@ int main(int argc, char **argv)
             index++;
         }
     }
-    printf("\n");
-    printf("%d - %d\n", novaImg.height, novaImg.width);
     SOIL_save_image("outOriginal.bmp", SOIL_SAVE_TYPE_BMP, pic.width, pic.height,
                     3, (const unsigned char *)pic.img);
     SOIL_save_image("outNovoReduzido.bmp", SOIL_SAVE_TYPE_BMP, novaImg.width, novaImg.height,
