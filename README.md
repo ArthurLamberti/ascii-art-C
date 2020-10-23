@@ -31,14 +31,14 @@ $ sudo apt-get install freeglut3-dev
 
 
 ### Rodando a aplicacao
-  <p>Clone esse repositorio</p>
-  $ git clone https://github.com/ArthurLamberti/ascii-art-C.git
-  <p>Va para a pasta da aplicacao no terminal/cmd</p>
-  $ cd ascii-art-C
-  <p>Instale e compile a aplicacao</p>
-    <p>Para linux e MacOS</p>
-    $ make</br>
-    <p>Para Windows</p>
-    $ mingw32-make -f Makefile.mk
-  <p>Passe uma imagem em formato .png e o fator de reducao para o loader</p>
-  $ ./loader pathToImage.png 0
+<p>Clone esse repositorio</p>
+$ git clone https://github.com/ArthurLamberti/ascii-art-C.git
+<p>Va para a pasta da aplicacao no terminal/cmd</p>
+$ cd ascii-art-C
+<p>Instale e compile a aplicacao</p>
+<p>Para linux e MacOS</p>
+$ make
+<p>Para Windows</p>
+$ mingw32-make -f Makefile.mk
+<p>Passe uma imagem em formato .png e o fator de reducao para o loader</p>
+$ ./loader pathToImage.png 0
