@@ -2,10 +2,10 @@
 <p align="center">Programa pra transformar imagem em Ascii Art, transformando em tons de cinza, podendo redimensionar a imagem</p>
 <p align="center">Trabalho feito na disciplina de Programacao de Software Basico - PUCRS</p>
 <p align="center">
- <a href="###Objetivo">Objetivo</a> •
- <a href="###Tecnologias">Tecnologias</a> • 
- <a href="###Features">Features</a> • 
- <a href="###Rodando">Rodando a aplicacao</a> • 
+ <a href="#Objetivo">Objetivo</a> •
+ <a href="#Tecnologias">Tecnologias</a> • 
+ <a href="#Features">Features</a> • 
+ <a href="#Rodando">Rodando a aplicacao</a> • 
 </p>
 <h4 align="center">Entregue conforme requisitado</h4>
 
@@ -37,9 +37,8 @@ $ sudo apt-get install freeglut3-dev
   $ cd ascii-art-C
   <p>Instale e compile a aplicacao</p>
     <p>Para linux e MacOS</p>
-    $ make
+    $ make</br>
     <p>Para Windows</p>
     $ mingw32-make -f Makefile.mk
-
   <p>Passe uma imagem em formato .png e o fator de reducao para o loader</p>
   $ ./loader pathToImage.png 0
